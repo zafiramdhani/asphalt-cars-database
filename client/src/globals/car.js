@@ -26,5 +26,10 @@ export const useCarStore = create(set => ({
       success: true,
       message: "A new car added"
     }
+  },
+  fetchAllCars: async () => {
+    const res = await fetch('/api/cars');
+    const data = await res.json();
+    set({ cars: data.data });
   }
 }));
