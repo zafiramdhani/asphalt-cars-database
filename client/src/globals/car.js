@@ -31,5 +31,18 @@ export const useCarStore = create(set => ({
     const res = await fetch('/api/cars');
     const data = await res.json();
     set({ cars: data.data });
+  },
+  deleteCar: async (id) => {
+    const res = await fetch(`/api/cars/${id}`, {
+      method: 'DELETE'
+    });
+    const data = await res.json();
+
+    if (!data.success) return { success: false, message: data.message }
+    set(state => ({ cars: state.cars.filter(car => car._id !== id) }));
+    return {
+      success: true,
+      message: data.message
+    };
   }
 }));
