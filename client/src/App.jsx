@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import AddCarPage from './Pages/AddCarPage'
 import Homepage from './Pages/Homepage'
 import Navbar from './components/Navbar'
+import CarDetails from './Pages/CarDetails'
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Homepage />} />
         <Route path='/add' element={<AddCarPage />} />
+        <Route path='/car/:id' element={<CarDetails />} />
       </Routes>
     </Box>
   )

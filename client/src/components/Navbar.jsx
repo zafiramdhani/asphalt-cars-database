@@ -10,12 +10,12 @@ const Navbar = () => {
     text: ''
   }
 
-  if (location.pathname === '/') {
-    buttonText.text = 'Add new car'
-    buttonText.link = '/add'
-  } else if (location.pathname === '/add') {
+  if (location.pathname === '/add') {
     buttonText.text = 'Homepage'
     buttonText.link = '/'
+  } else {
+    buttonText.text = 'Add new car'
+    buttonText.link = '/add'
   }
 
   return (

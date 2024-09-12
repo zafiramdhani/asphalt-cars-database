@@ -9,7 +9,11 @@ const Homepage = () => {
 
   useEffect(() => {
     fetchAllCars();
-  }, [])
+  }, [fetchAllCars])
+
+  if (cars.length === 0) {
+    return <h1>Loading cars...</h1>; // Show loading while data is being fetched
+  }
 
   return (
     <Container>
@@ -27,7 +31,9 @@ const Homepage = () => {
 
       <SimpleGrid columns={{ base: 1, md: 3, lg: 4 }} spacing={5} w='86vw'>
         {cars.map(car => (
-          <CarCard key={car._id} car={car}/>
+          <Link key={car._id} to={`/car/${car._id}`} state={{ car }}>
+            <CarCard car={car}/>
+          </Link>
         ))}
       </SimpleGrid>
 
